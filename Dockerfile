@@ -1,3 +1,5 @@
+# Cache-bust ARG to force fresh Docker build on change
+ARG CACHEBUST=1
 FROM node:18-bullseye-slim AS builder
 
 # Install build dependencies (Chromium libs may also be needed at runtime)
