@@ -16,6 +16,7 @@ RUN npm ci
 # Copy source and build the app (includes API under frontend/app/api)
 COPY frontend/ ./
 RUN npm run build
+RUN echo 'BUILDER .next contents:' && ls -la ./.next || true
 
 FROM node:18-bullseye-slim AS runner
 
