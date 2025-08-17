@@ -1,1 +1,38 @@
-node_modules
+# Node
+node_modules/
+.next/
+.env
+.env.local
+.env.*.local
+.DS_Store
+dist/
+coverage/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VSCode
+.vscode/
+
+# Mac
+.DS_Store
+
+# Lock files (keep one if you want)
+package-lock.json
+yarn.lock
+
+# local env
+.local
+
+# IDE files
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# build
+out/
+public/static/
