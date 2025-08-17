@@ -356,7 +356,7 @@ async function scrapeSnapdeal(term: string, page: number = 1) {
         const price = priceElement?.textContent?.trim() || 'Price not available';
         
         let rating = 'N/A';
-        const filledStars = item.querySelector('.filled-stars');
+        const filledStars = item.querySelector('.filled-stars') as HTMLElement | null;
         const ratingCountElement = item.querySelector('.product-rating-count');
         
         if (filledStars && ratingCountElement) {
@@ -367,7 +367,7 @@ async function scrapeSnapdeal(term: string, page: number = 1) {
             rating = `${ratingValue} (${ratingCount})`;
           }
         } else if (filledStars) {
-          const widthPercent = filledStars.style.width?.replace('%', '');
+          const widthPercent = (filledStars as HTMLElement).style.width?.replace('%', '');
           if (widthPercent) {
             const ratingValue = (parseFloat(widthPercent) / 20).toFixed(1);
             rating = ratingValue;
