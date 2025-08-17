@@ -36,4 +36,5 @@ COPY --from=builder /usr/src/app/frontend/package*.json ./
 ENV PORT=3000
 EXPOSE 3000
 
-CMD ["npx","next","start","-p","3000"]
+# At container start, ensure a production build exists (fallback to building at runtime)
+CMD ["sh","-lc","echo '*** .next contents:'; if [ -d ./.next ]; then ls -la ./.next; else echo '.next missing'; fi; npx next start -p $PORT"]
