@@ -1,0 +1,23 @@
+{
+  "name": "product-search-compare",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "next": "^14.2.31",
+    "postcss": "^8.4.21",
+    "puppeteer": "^24.16.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.10"
+  }
+}

@@ -1,0 +1,57 @@
+.thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0;
+    background: transparent;
+  }
+  
+  .thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #9333ea;
+    cursor: pointer;
+    pointer-events: all;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .thumb::-moz-range-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #9333ea;
+    cursor: pointer;
+    pointer-events: all;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .thumb--zindex-3 {
+    z-index: 3;
+  }
+  
+  .thumb--zindex-4 {
+    z-index: 4;
+  }
+  
+  /* Ensure slider inputs are draggable */
+  .thumb::-webkit-slider-thumb {
+    pointer-events: all;
+  }
+  
+  .thumb::-moz-range-thumb {
+    pointer-events: all;
+  }
+  
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
