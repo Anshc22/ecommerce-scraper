@@ -27,8 +27,12 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /usr/src/app/frontend
 
-# Copy entire built frontend from builder to ensure all artifacts are present
-COPY --from=builder /usr/src/app/frontend ./
+# Copy built artifacts and production dependencies from builder into runtime
+COPY --from=builder /usr/src/app/frontend/.next ./.next
+COPY --from=builder /usr/src/app/frontend/public ./public
+COPY --from=builder /usr/src/app/frontend/node_modules ./node_modules
+COPY --from=builder /usr/src/app/frontend/package*.json ./
+COPY --from=builder /usr/src/app/frontend/next.config.js ./next.config.js
 
 ENV PORT=3000
 EXPOSE 3000
