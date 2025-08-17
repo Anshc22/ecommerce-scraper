@@ -30,6 +30,8 @@ WORKDIR /usr/src/app/frontend
 
 # Copy built artifacts and production dependencies from builder into runtime
 COPY --from=builder /usr/src/app/frontend/.next ./.next
+COPY --from=builder /usr/src/app/frontend/.next/standalone ./.next/standalone
+COPY --from=builder /usr/src/app/frontend/.next/static ./.next/static
 COPY --from=builder /usr/src/app/frontend/public ./public
 COPY --from=builder /usr/src/app/frontend/node_modules ./node_modules
 COPY --from=builder /usr/src/app/frontend/package*.json ./
@@ -38,5 +40,6 @@ COPY --from=builder /usr/src/app/frontend/next.config.js ./next.config.js
 ENV PORT=3000
 EXPOSE 3000
 
-# At container start, ensure a production build exists (fallback to building at runtime)
-CMD ["sh","-lc","echo '*** .next contents:'; if [ -d ./.next ]; then ls -la ./.next; else echo '.next missing'; fi; if [ -d ./.next ]; then npx next start -p $PORT; else npm run build && npx next start -p $PORT; fi"]
+# Prefer running Next standalone server (faster and self-contained). Fallback to next start if standalone missing.
+ENV NODE_ENV=production
+CMD ["sh","-lc","echo '*** .next contents:'; if [ -d ./.next/standalone ]; then ls -la ./.next/standalone; fi; if [ -f ./.next/standalone/server.js ]; then node ./.next/standalone/server.js; elif [ -d ./.next ]; then npx next start -p $PORT; else npm run build && npx next start -p $PORT; fi"]
