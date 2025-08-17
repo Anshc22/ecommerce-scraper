@@ -388,8 +388,10 @@ export default function Page() {
         aValue = extractPrice(a.price);
         bValue = extractPrice(b.price);
       } else if (sortConfig.key === 'rating') {
-        const aRating = parseFloat(a.rating.split(' ')[0] || '0');
-        const bRating = parseFloat(b.rating.split(' ') || '0');
+        const aRatingStr = Array.isArray(a.rating.split(' ')) ? a.rating.split(' ')[0] : (a.rating as string);
+        const bRatingStr = Array.isArray(b.rating.split(' ')) ? b.rating.split(' ')[0] : (b.rating as string);
+        const aRating = parseFloat(aRatingStr || '0');
+        const bRating = parseFloat(bRatingStr || '0');
         aValue = isNaN(aRating) ? 0 : aRating;
         bValue = isNaN(bRating) ? 0 : bRating;
       } else {
