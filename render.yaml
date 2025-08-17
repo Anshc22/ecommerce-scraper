@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ecommerce-scraper
+    env: docker
+    repo: https://github.com/Anshc22/ecommerce-scraper
+    branch: main
+    plan: starter
+    buildCommand: ''
+    startCommand: ''
+    env:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
