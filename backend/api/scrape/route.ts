@@ -360,14 +360,16 @@ async function scrapeSnapdeal(term: string, page: number = 1) {
         const ratingCountElement = item.querySelector('.product-rating-count');
         
         if (filledStars && ratingCountElement) {
-          const widthPercent = filledStars.style.width?.replace('%', '');
+          const el = filledStars as HTMLElement;
+          const widthPercent = el?.style?.width?.replace('%', '');
           if (widthPercent) {
             const ratingValue = (parseFloat(widthPercent) / 20).toFixed(1);
             const ratingCount = ratingCountElement.textContent?.trim().replace(/[()]/g, '') || '';
             rating = `${ratingValue} (${ratingCount})`;
           }
         } else if (filledStars) {
-          const widthPercent = (filledStars as HTMLElement).style?.width?.replace('%', '');
+          const el = filledStars as HTMLElement;
+          const widthPercent = el?.style?.width?.replace('%', '');
           if (widthPercent) {
             const ratingValue = (parseFloat(widthPercent) / 20).toFixed(1);
             rating = ratingValue;
