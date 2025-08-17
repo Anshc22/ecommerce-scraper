@@ -367,7 +367,7 @@ async function scrapeSnapdeal(term: string, page: number = 1) {
             rating = `${ratingValue} (${ratingCount})`;
           }
         } else if (filledStars) {
-          const widthPercent = (filledStars as HTMLElement).style.width?.replace('%', '');
+          const widthPercent = (filledStars as HTMLElement).style?.width?.replace('%', '');
           if (widthPercent) {
             const ratingValue = (parseFloat(widthPercent) / 20).toFixed(1);
             rating = ratingValue;
